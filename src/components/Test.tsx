@@ -6,7 +6,6 @@ import useTodos from "$Root/hooks/useTodos";
 
 function Test() {
   const { todos } = useTodos();
-  console.log(todos)
   return (
     <>
       <TodoInput />
