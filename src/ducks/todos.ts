@@ -1,10 +1,4 @@
-import { createReducer } from "typesafe-actions";
-
-const ADD_TODOS = "todos/ADD_TODOS";
-const REMOVE_TODOS = "todos/REMOVE_TODOS";
-const TOGGLE_TODOS = "todos/TOGGLE_TODO";
-
-type TodoAction = ReturnType<typeof addTodos> & ReturnType<typeof removeTodos> & ReturnType<typeof toggleTodo>;
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export type TodoState = {
   id: number;
@@ -14,31 +8,28 @@ export type TodoState = {
 
 const initialState: TodoState[] = [];
 
-const reducer = createReducer<TodoState[], TodoAction>(initialState, {
-  [TOGGLE_TODOS]: (state, action) => {
-    return [...state].map(({ id, text, done }) => {
-      if (id === action.id) {
-        return {
-          id,
-          text,
-          done: true
-        };
-      }
-      return {
-        id,
-        text,
-        done
-      };
-    });
+const todoSlice = createSlice({
+  name: "todos",
+  initialState,
+  reducers: {
+    addTodos: (state, action: PayloadAction<Pick<TodoState, "text">>) => {
+      const id = Math.max(...state.map(({ id }) => id));
+      state.push({
+        id: id !== -Infinity ? id + 1 : 0,
+        text: action.payload.text,
+        done: false,
+      });
+    },
+    removeTodos: (state, action: PayloadAction<Pick<TodoState, "id">>) => {
+      return state.filter(({ id }) => id !== action.payload.id);
+    },
+    toggleTodo: (state, action: PayloadAction<Pick<TodoState, "id">>) => {
+      return state.map(({ id, text, done }) =>
+        id === action.payload.id ? { id, text, done: true } : { id, text, done }
+      );
+    },
   },
-  [ADD_TODOS]: (state, action) => {
-    const id = Math.max(...state.map(({ id }) => id));
-    return [...state, { id: id !== -Infinity ? id + 1 : 0, text: action.text, done: false }];
-  },
-  [REMOVE_TODOS]: (state, action) => state.filter(({ id }) => id !== action.id)
 });
 
-export const addTodos = (text: string) => ({ type: ADD_TODOS, text });
-export const removeTodos = (id: number) => ({ type: REMOVE_TODOS, id });
-export const toggleTodo = (id: number) => ({ type: TOGGLE_TODOS, id });
-export default reducer;
+export const { addTodos, removeTodos, toggleTodo } = todoSlice.actions;
+export default todoSlice.reducer;
