@@ -6,16 +6,22 @@ import { RootState } from "$Root/ducks";
 function useTodos() {
   const dispatch = useDispatch();
 
-  const todos = useSelector<RootState>((state: RootState) => state.todos) as TodoState[];
+  const todos = useSelector<RootState>(
+    (state: RootState) => state.todos
+  ) as TodoState[];
   const handleClickRemove = useCallback(
-    (id: number) => (event: React.SyntheticEvent<HTMLButtonElement>) => dispatch(removeTodos(id)),
+    (id: number) => (event: React.SyntheticEvent<HTMLButtonElement>) =>
+      dispatch(removeTodos({ id })),
     [dispatch]
   );
-  const addTodoItem = useCallback((text: string) => dispatch(addTodos(text)), [dispatch]);
+  const addTodoItem = useCallback(
+    (text: string) => dispatch(addTodos({ text })),
+    [dispatch]
+  );
   return {
     handleClickRemove,
     addTodoItem,
-    todos
+    todos,
   };
 }
 
