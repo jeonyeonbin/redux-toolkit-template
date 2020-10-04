@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import useCounter from "$Root/hooks/useCounter";
 function Counter({}) {
-  const { counter, handleClick } = useCounter();
+  const { counter, handleClick, getGithubEvents } = useCounter();
+
+  useEffect(() => {
+    getGithubEvents("123");
+  }, [counter]);
   return (
     <div>
       <h1>{counter.count}</h1>
