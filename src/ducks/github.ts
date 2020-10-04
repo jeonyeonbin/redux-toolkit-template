@@ -22,7 +22,6 @@ export const fetchGithubIssueEvents = createAsyncThunk(
   "github/fetchGithubIssueEvents",
   async (userId: string, { getState }) => {
     const result = await getGithubIssueEvents();
-    console.log(result);
     return result.data;
   }
 );
