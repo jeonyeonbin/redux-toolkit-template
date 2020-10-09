@@ -6,7 +6,8 @@
       "$Root/*": ["./src/*"],
       "$Types/*": ["./src/types/*"],
       "$Hooks/*": ["./src/hooks/*"],
-      "$Styles/*": ["./src/styles/*"]
+      "$Styles/*": ["./src/styles/*"],
+      "$Pages/*": ["./src/pages/*"]
     }
   }
 }
