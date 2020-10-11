@@ -1,3 +1,3 @@
-import CounterPage from "./CounterPage";
+import CounterPage from './CounterPage';
 
 export default CounterPage;
