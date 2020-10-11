@@ -8,7 +8,11 @@ function useTodos() {
 
 	const todos = useSelector<RootState>((state: RootState) => state.todos) as TodoState[];
 	const handleClickRemove = useCallback(
-		(id: number) => (event: React.SyntheticEvent<HTMLButtonElement>) => dispatch(removeTodos({ id })),
+		(id: number) => (event: React.SyntheticEvent<HTMLButtonElement>) => {
+			event.preventDefault();
+			event.stopPropagation();
+			dispatch(removeTodos({ id }));
+		},
 		[dispatch]
 	);
 	const addTodoItem = useCallback((text: string) => dispatch(addTodos({ text })), [dispatch]);

@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import useTodos from '$Root/hooks/useTodos';
 
-type Props = {};
-const TodoInput: React.FC<Props> = ({}: Props) => {
+const TodoInput: React.FC = () => {
 	const [value, setValue] = useState<string>('');
 	const { addTodoItem } = useTodos();
 	const onSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {

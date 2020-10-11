@@ -1,7 +1,7 @@
 import React from 'react';
 import '$Styles/SassComponent.scss';
 
-const SassComponent = () => {
+const SassComponent: React.FC = () => {
 	return (
 		<div className="SassComponent">
 			<div className="box red" />
