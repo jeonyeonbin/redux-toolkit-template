@@ -1,11 +1,11 @@
-import Counter from "$Components/Counter";
-import React from "react";
+import Counter from '$Components/Counter';
+import React from 'react';
 
 function CounterPage({}) {
-  return (
-    <>
-      <Counter />
-    </>
-  );
+	return (
+		<>
+			<Counter />
+		</>
+	);
 }
 export default CounterPage;
