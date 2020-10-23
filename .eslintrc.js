@@ -1,5 +1,8 @@
 module.exports = {
   "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "tsconfig.json",
+  },
   "plugins": ["@typescript-eslint", "react-hooks", "import"],
   "extends": [
     "plugin:jsx-a11y/recommended",
@@ -9,25 +12,36 @@ module.exports = {
     "plugin:import/typescript",
     "plugin:@typescript-eslint/recommended",
     "prettier/@typescript-eslint",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "react-app"
+  ],
+  "rules": {
+    // disable the rule for all files
+    "@typescript-eslint/explicit-function-return-type": "off",
+  },
+  "overrides": [
+    {
+      // enable the rule specifically for TypeScript files
+      "files": ["*.ts", "*.tsx"],
+    }
   ],
   "settings": {
     "import/parsers": {
       "@typescript-eslint/parser": [".ts", ".tsx"]
     },
-    'import/resolver': {
+    "import/resolver": {
       "node": {
-        "extensions": ['.js', '.jsx', '.ts', '.tsx'],
-        "moduleDirectory": ['node_modules', 'src/'],
+        "extensions": [".js", ".jsx", ".ts", ".tsx"],
+        "moduleDirectory": ["node_modules", "src/"],
       },
       // use <root>/tsconfig.json
       "typescript": {
-        "alwaysTryTypes": true // always try to resolve types under `<root>@types` directory even it doesn't contain any source code, like `@types/unist`
+        "alwaysTryTypes": true // always try to resolve types under `<root>@types` directory even it doesn"t contain any source code, like `@types/unist`
       },
       // use <root>/path/to/folder/tsconfig.json
       "typescript": {
         "project": "./tsconfig.json"
       }
     }
-  }
-};
+  },
+}
