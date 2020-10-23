@@ -1,7 +1,8 @@
 import React from 'react';
-import useTodos from '$Root/hooks/useTodos';
+
 import TodoInput from '$Components/TodoInput';
 import TodoItem from '$Components/TodoItem';
+import useTodos from '$Root/hooks/useTodos';
 
 function TodoPage() {
 	const { todos } = useTodos();

@@ -3,7 +3,7 @@ module.exports = {
   "parserOptions": {
     "project": "tsconfig.json",
   },
-  "plugins": ["@typescript-eslint", "react-hooks", "import"],
+  "plugins": ["@typescript-eslint", "react-hooks", "import", "simple-import-sort"],
   "extends": [
     "plugin:jsx-a11y/recommended",
     "plugin:react/recommended",
@@ -17,7 +17,11 @@ module.exports = {
   ],
   "rules": {
     // disable the rule for all files
+    "@typescript-eslint/triple-slash-reference": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
+    "simple-import-sort/sort": "error",
+    "sort-imports": "off",
+    "import/order": "off"
   },
   "overrides": [
     {

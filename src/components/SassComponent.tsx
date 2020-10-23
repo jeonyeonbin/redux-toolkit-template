@@ -1,5 +1,6 @@
-import React from 'react';
 import '$Styles/SassComponent.scss';
+
+import React from 'react';
 
 const SassComponent: React.FC = () => {
 	return (
