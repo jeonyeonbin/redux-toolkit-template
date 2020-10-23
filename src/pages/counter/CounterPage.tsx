@@ -1,5 +1,6 @@
-import Counter from '$Components/Counter';
 import React from 'react';
+
+import Counter from '$Components/Counter';
 
 function CounterPage({}) {
 	return (

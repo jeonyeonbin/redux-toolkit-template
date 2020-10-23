@@ -1,7 +1,8 @@
-import { useSelector, useDispatch } from 'react-redux';
 import { useCallback } from 'react';
-import { increaseBy } from '$Root/ducks/counter';
+import { useDispatch, useSelector } from 'react-redux';
+
 import { RootState } from '$Root/ducks';
+import { increaseBy } from '$Root/ducks/counter';
 import { fetchGithubIssueEvents } from '$Root/ducks/github';
 
 export default function useCounter() {

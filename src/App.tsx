@@ -1,8 +1,10 @@
-import React from 'react';
 import './App.css';
-import { Link, BrowserRouter, Switch, Route } from 'react-router-dom';
-import TodoPage from '$Pages/todo';
+
+import React from 'react';
+import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
+
 import CounterPage from '$Pages/counter';
+import TodoPage from '$Pages/todo';
 
 function App() {
 	return (

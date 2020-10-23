@@ -1,7 +1,8 @@
-import { useDispatch, useSelector } from 'react-redux';
 import { useCallback } from 'react';
-import { removeTodos, addTodos, TodoState } from '$Root/ducks/todos';
+import { useDispatch, useSelector } from 'react-redux';
+
 import { RootState } from '$Root/ducks';
+import { addTodos, removeTodos, TodoState } from '$Root/ducks/todos';
 
 function useTodos() {
 	const dispatch = useDispatch();
