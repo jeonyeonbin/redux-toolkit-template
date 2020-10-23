@@ -1,4 +1,5 @@
-import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+
 import { getGithubIssueEvents } from '$Root/api/github';
 
 export type GithubState = {

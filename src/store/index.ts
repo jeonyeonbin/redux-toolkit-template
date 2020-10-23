@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
 import logger from 'redux-logger';
+
 import rootReducer from '$Root/ducks';
 const store = configureStore({
 	reducer: rootReducer,
