@@ -1,10 +1,10 @@
 import './App.css';
 
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
 
-import CounterPage from '$Pages/counter';
-import TodoPage from '$Pages/todo';
+const TodoPage = lazy(() => import('$Pages/todo'));
+const CounterPage = lazy(() => import('$Pages/counter'));
 
 function App() {
 	return (
@@ -19,14 +19,16 @@ function App() {
 					</li>
 				</ul>
 			</nav>
-			<Switch>
-				<Route exact path="/">
-					<TodoPage />
-				</Route>
-				<Route path="/counter">
-					<CounterPage />
-				</Route>
-			</Switch>
+			<Suspense fallback={<div>loading...</div>}>
+				<Switch>
+					<Route exact path="/">
+						<TodoPage />
+					</Route>
+					<Route path="/counter">
+						<CounterPage />
+					</Route>
+				</Switch>
+			</Suspense>
 		</BrowserRouter>
 	);
 }
